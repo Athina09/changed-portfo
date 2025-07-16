@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athina | Tech Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(135deg, #181c24 0%, #23243a 100%);
+      min-height: 100vh;
+      color: #e0e6f7;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 900px;
+      margin: 48px auto 32px auto;
+      background: rgba(24,28,36,0.98);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px #0e0e1a99;
+      padding: 48px 40px 40px 40px;
+      position: relative;
+      overflow: hidden;
+      border: 1.5px solid #2d3a4a;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2.5em;
+    }
+    .name {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #4fc3f7;
+      letter-spacing: 1px;
+      margin-bottom: 0.2em;
+    }
+    .role {
+      font-size: 1.2rem;
+      color: #b0bec5;
+      font-weight: 600;
+      margin-bottom: 0.5em;
+    }
+    .about {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #e0e6f7;
+      background: rgba(76, 195, 247, 0.07);
+      border-left: 3px solid #4fc3f7;
+      padding: 18px 22px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #4fc3f722;
+      margin-bottom: 2.5em;
+    }
+    h2 {
+      color: #4fc3f7;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-top: 2.5em;
+      margin-bottom: 1em;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #2d3a4a;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+    .section {
+      margin-bottom: 2em;
+    }
+    .education-list, .cert-list, .skills-list, .lang-list, .blog-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .education-list li, .cert-list li, .skills-list li, .lang-list li {
+      margin-bottom: 0.7em;
+      font-size: 1.05rem;
+      color: #b0bec5;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .education-degree {
+      color: #4fc3f7;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    .education-inst {
+      color: #e0e6f7;
+      font-weight: 500;
+    }
+    .education-year {
+      color: #90caf9;
+      font-size: 0.98em;
+    }
+    .cert-list li::before {
+      content: '📜';
+      margin-right: 8px;
+    }
+    .skills-list li::before {
+      content: '✔️';
+      margin-right: 8px;
+    }
+    .lang-list li::before {
+      content: '🌐';
+      margin-right: 8px;
+    }
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2em;
+    }
+    .blog-title {
+      color: #4fc3f7;
+      font-weight: 600;
+      font-size: 1.08rem;
+      margin-bottom: 0.2em;
+    }
+    .blog-desc {
+      color: #b0bec5;
+      font-size: 1rem;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 2em;
+    }
+    .tech {
+      background: #23243a;
+      color: #4fc3f7;
+      border-radius: 8px;
+      padding: 8px 18px;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px #4fc3f722;
+      border: 1.5px solid #2d3a4a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .tech:hover {
+      background: #4fc3f7;
+      color: #181c24;
+    }
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-bottom: 2em;
+      justify-content: flex-start;
+    }
+    .project-card {
+      background: #23243a;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px #4fc3f744;
+      border: 1.5px solid #2d3a4a;
+      padding: 24px 20px 18px 20px;
+      width: 270px;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      color: #e0e6f7;
+      position: relative;
+      transition: transform 0.18s, box-shadow 0.18s;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 8px 32px #4fc3f799;
+      border-color: #4fc3f7;
+    }
+    .project-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #4fc3f7;
+      margin-bottom: 0.2em;
+    }
+    .project-desc {
+      font-size: 1rem;
+      color: #b0bec5;
+      margin-bottom: 0.5em;
+    }
+    .project-tech {
+      font-size: 0.95rem;
+      color: #90caf9;
+      font-weight: 600;
+      margin-top: auto;
+    }
+    .contact {
+      margin-top: 2.5em;
+      text-align: center;
+    }
+    .contact a {
+      color: #4fc3f7;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 0 10px;
+      transition: color 0.2s;
+    }
+    .contact a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      color: #4fc3f7;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 1rem;
+      margin: 32px 0 12px 0;
+      opacity: 0.7;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 700px) {
+      .container { padding: 16px 2vw; }
+      .projects { flex-direction: column; align-items: center; }
+      .project-card { width: 98%; }
+      .tech-stack { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particle-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;"></canvas>
+  <div class="container" style="position:relative;z-index:1;">
+    <header>
+      <div class="name">Athina</div>
+      <div class="role" id="typing-role" style="min-height:1.5em;"></div>
+    </header>
+    <div class="about">
+      Hi! I'm Athina, a passionate full stack developer with a love for building modern, scalable web applications. I enjoy solving problems, learning new technologies, and collaborating with others to create impactful digital experiences. Exploring a bit of AI too. Let's build something amazing together!<br><br>
+      <strong>Curious about AI, LLMs, and RAG:</strong> I'm fascinated by the world of artificial intelligence, especially large language models (LLMs) and retrieval-augmented generation (RAG). I'm eager to explore how these technologies can be used to build smarter, more helpful applications!
+    </div>
+    <div class="section">
+      <h2>Education</h2>
+      <ul class="education-list">
+        <li><span class="education-degree">B.E. in Computer Science</span> <span class="education-inst">CIT,Chennai</span> <span class="education-year">2025-2029</span></li>
+        <li><span class="education-degree">PCM(12 th grade)</span> <span class="education-inst">Edustar</span> <span class="education-year">2025</span></li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Certifications</h2>
+      <ul class="cert-list">
+        <li>Code Galatta certification(C and C++)</li>
+        <li>Udemy Full-stack Certification</li>
+        <li>Python for Everybody (Cisco)</li>
+        <li>Azure Fundamentals</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li>Problem Solving</li>
+        <li>Communication</li>
+        <li>Teamwork</li>
+        <li>Adaptability</li>
+        <li>Time Management</li>
+      </ul>
+    </div>
+    <h2>Tech Stack</h2>
+    <div class="tech-stack">
+      <span class="tech">HTML5</span>
+      <span class="tech">CSS3</span>
+      <span class="tech">JavaScript</span>
+      <span class="tech">React</span>
+      <span class="tech">Figma</span>
+      <span class="tech">C</span>
+      <span class="tech">C++</span>
+      <span class="tech">Python</span>
+      <span class="tech">Java</span>
+    </div>
+    <h2 style="display: flex; align-items: center; gap: 10px;">
+      Projects
+      <span id="lightbulb" style="cursor:pointer; font-size:1.4em; transition: filter 0.3s;">💡</span>
+    </h2>
+    <div class="projects">
+      <!-- Featured AI Project -->
+      <div class="project-card" style="border:2px solid #ffe066;box-shadow:0 0 32px 8px #ffe06699;position:relative;" data-back="A demo AI chatbot powered by Ollama, capable of natural conversations and answering questions. Built with Python and Ollama API.|Fun fact: My first chatbot using a local LLM!">
+        <div style="position:absolute;top:10px;right:10px;background:#ffe066;color:#181c24;font-size:0.85em;padding:2px 10px;border-radius:8px;font-weight:700;">Featured</div>
+        <div class="project-title">AI Chatbot with Ollama</div>
+        <div class="project-desc">A demo chatbot powered by Ollama, capable of natural conversations and answering questions. <span style='color:#ffe066;font-weight:600;'>Demo Coming Soon!</span></div>
+        <div class="project-tech">Python, Ollama API</div>
+      </div>
+      <div class="project-card" data-back="A modern personal portfolio to showcase my work and skills. Built with Html,CSS styled components.|Fun fact: This site is 100% custom!">
+        <div class="project-title">Portfolio Website</div>
+        <div class="project-desc">A modern personal portfolio to showcase my work and skills. Built with Html,CSS styled components.</div>
+        <div class="project-tech">Html, Css</div>
+      </div>
+      <div class="project-card" data-back="A Canteen Management System is a software solution designed to help automate and streamline operations in a canteen.|Fun fact: Handles 100+ orders/min!"><div class="project-title">Canteen billing System</div>
+        <div class="project-desc">A Canteen Management System is a software solution designed to help automate and streamline operations in a canteen.</div>
+        <div class="project-tech">c++</div>
+      </div>
+      <div class="project-card" data-back="A Library Management System is a software application designed to help libraries keep track of books,users,administration|Fun fact: Inspired by my love for books!"><div class="project-title">Library Management System</div>
+        <div class="project-desc">A Library Management System is a software application designed to help libraries keep track of books,users,administration</div>
+        <div class="project-tech">c++</div>
+      </div>
+      <!-- DOM Manipulation Counter Project -->
+      <div class="project-card" data-back="A simple interactive counter built with pure JavaScript DOM manipulation. Users can increment, decrement, and reset the count.|Fun fact: This project helped me master event listeners!">
+        <div class="project-title">DOM Manipulation Counter</div>
+        <div class="project-desc">An interactive counter app using JavaScript DOM manipulation. Click to increment, decrement, or reset the value.</div>
+        <div class="project-tech">JavaScript, HTML, CSS</div>
+      </div>
+      <!-- Light Bulb Project -->
+      <div class="project-card" data-back="A fun project where clicking a light bulb icon toggles the page theme between light and dark modes.|Fun fact: Inspired by my love for interactive UI!">
+        <div class="project-title">Light Bulb Toggle</div>
+        <div class="project-desc">A light bulb icon that toggles the website theme between light and dark modes with smooth transitions.</div>
+        <div class="project-tech">JavaScript, CSS</div>
+      </div>
+    </div>
+    <!-- Timeline Section -->
+    <div class="section">
+      <h2>Learning Journey</h2>
+      <ul style="list-style:none;padding:0;margin:0;max-width:600px;">
+        <li style="margin-bottom:1.2em;position:relative;padding-left:32px;">
+          <span style="position:absolute;left:0;top:0;font-size:1.2em;color:#4fc3f7;">🚀</span>
+          <span style="color:#e0e6f7;font-weight:600;">2025:</span> Started coding in C and C++
+        </li>
+        <li style="margin-bottom:1.2em;position:relative;padding-left:32px;">
+          <span style="position:absolute;left:0;top:0;font-size:1.2em;color:#4fc3f7;">🌐</span>
+          <span style="color:#e0e6f7;font-weight:600;">2025:</span> Built my first web app with HTML, CSS, and JavaScript
+        </li>
+        <li style="margin-bottom:1.2em;position:relative;padding-left:32px;">
+          <span style="position:absolute;left:0;top:0;font-size:1.2em;color:#4fc3f7;">🤖</span>
+          <span style="color:#e0e6f7;font-weight:600;">2025:</span> Explored AI, LLMs, and RAG; built my first AI chatbot
+        </li>
+        <li style="margin-bottom:1.2em;position:relative;padding-left:32px;">
+          <span style="position:absolute;left:0;top:0;font-size:1.2em;color:#4fc3f7;">🏆</span>
+          <span style="color:#e0e6f7;font-weight:600;">2025:</span> Won a competitive programming contest
+        </li>
+      </ul>
+    </div>
+    <!-- Awards Section -->
+    <div class="section">
+      <h2>Awards & Achievements</h2>
+      <ul class="cert-list">
+        <li>Top 25 Best Coders from Voice Galatta</li>
+        <li>Hackerrank Contest Winner from Code Galatta</li>
+        <li>Teaching Workshops held in Problem Solving at Code Galatta</li>
+      </ul>
+    </div>
+    <!-- Fun Facts Section -->
+    <div class="section">
+      <h2>Did you know?</h2>
+      <ul class="skills-list">
+        <li>I can debug code in my sleep (almost!)</li>
+        <li>I love learning languages—both human and programming!</li>
+        <li>I once built a chatbot that tells jokes.</li>
+        <li>I’m always up for a hackathon or coding challenge.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Languages</h2>
+      <ul class="lang-list">
+        <li>English</li>
+        <li>Hindi</li>
+        <li>Telugu</li>
+        <li>Tamil</li>
+      </ul>
+    </div>
+    <div class="contact">
+      <h2>Contact</h2>
+      <a href="mailto:athinax09@email.com">athinax09@email.com</a>
+      <a href="https://www.linkedin.com/in/athina-bk-087554366/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Athina09" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <footer>
+    &mdash; Athina | will build more!
+  </footer>
+  <button id="fun-fact-btn" style="position:fixed;bottom:32px;right:32px;z-index:10;background:#4fc3f7;color:#181c24;border:none;border-radius:50%;width:56px;height:56px;font-size:1.7em;box-shadow:0 4px 16px #4fc3f799;cursor:pointer;transition:background 0.2s;">✨</button>
+  <div id="fun-fact-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(24,28,36,0.85);z-index:100;align-items:center;justify-content:center;">
+    <div style="background:#23243a;padding:32px 24px;border-radius:16px;box-shadow:0 8px 32px #4fc3f799;color:#e0e6f7;max-width:90vw;max-height:80vh;font-size:1.2em;position:relative;">
+      <span id="close-fact" style="position:absolute;top:12px;right:18px;font-size:1.3em;cursor:pointer;color:#4fc3f7;">&times;</span>
+      <div id="fact-text"></div>
+    </div>
+  </div>
+  <script>
+    // Typing effect for role
+    const roleText = "Exploring dev!";
+    const typingRole = document.getElementById('typing-role');
+    let idx = 0, typingForward = true;
+    function typeRole() {
+      if (typingForward) {
+        typingRole.innerHTML = roleText.slice(0, idx) + '<span style="color:#4fc3f7">|</span>';
+        if (idx < roleText.length) { idx++; setTimeout(typeRole, 90); }
+        else { typingForward = false; setTimeout(typeRole, 1200); }
+      } else {
+        typingRole.innerHTML = roleText.slice(0, idx) + '<span style="color:#4fc3f7">|</span>';
+        if (idx > 0) { idx--; setTimeout(typeRole, 40); }
+        else { typingForward = true; setTimeout(typeRole, 600); }
+      }
+    }
+    typeRole();
+
+    // Particle background
+    const canvas = document.getElementById('particle-bg');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    function createParticles() {
+      particles = [];
+      for (let i = 0; i < 60; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 2.2 + 1.2,
+          dx: (Math.random() - 0.5) * 0.7,
+          dy: (Math.random() - 0.5) * 0.7,
+          color: `rgba(79,195,247,${Math.random() * 0.5 + 0.3})`
+        });
+      }
+    }
+    createParticles();
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+    window.addEventListener('resize', createParticles);
+
+    // Project card flip
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(card => {
+      card.style.transition = 'transform 0.5s';
+      card.style.transformStyle = 'preserve-3d';
+      card.style.position = 'relative';
+      card.addEventListener('click', function() {
+        if (!card.classList.contains('flipped')) {
+          const back = document.createElement('div');
+          back.className = 'card-back';
+          back.style.position = 'absolute';
+          back.style.top = 0;
+          back.style.left = 0;
+          back.style.width = '100%';
+          back.style.height = '100%';
+          back.style.background = '#181c24';
+          back.style.color = '#4fc3f7';
+          back.style.display = 'flex';
+          back.style.flexDirection = 'column';
+          back.style.alignItems = 'center';
+          back.style.justifyContent = 'center';
+          back.style.borderRadius = '12px';
+          back.style.boxShadow = '0 4px 16px #4fc3f799';
+          back.style.transform = 'rotateY(180deg)';
+          back.style.backfaceVisibility = 'hidden';
+          const [desc, fact] = card.getAttribute('data-back').split('|');
+          back.innerHTML = `<div style='font-size:1.05em;margin-bottom:0.7em;'>${desc}</div><div style='font-size:0.95em;color:#ffe066;'>${fact}</div>`;
+          card.appendChild(back);
+          card.style.transform = 'rotateY(180deg)';
+          card.classList.add('flipped');
+        } else {
+          card.style.transform = '';
+          setTimeout(() => {
+            const back = card.querySelector('.card-back');
+            if (back) card.removeChild(back);
+            card.classList.remove('flipped');
+          }, 500);
+        }
+      });
+    });
+
+    // Lightbulb interactivity: toggles glow on project cards
+    const lightbulb = document.getElementById('lightbulb');
+    const projectCards = document.querySelectorAll('.project-card');
+    let glowOn = false;
+    lightbulb.addEventListener('click', () => {
+      glowOn = !glowOn;
+      projectCards.forEach(card => {
+        if (glowOn) {
+          card.style.boxShadow = '0 0 32px 8px #ffe066, 0 4px 16px #4fc3f744';
+          card.style.borderColor = '#ffe066';
+        } else {
+          card.style.boxShadow = '';
+          card.style.borderColor = '';
+        }
+      });
+      lightbulb.style.filter = glowOn ? 'drop-shadow(0 0 8px #ffe066)' : '';
+    });
+    // Animate project cards on hover (cooler effect)
+    projectCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = card.classList.contains('flipped') ? 'rotateY(180deg)' : 'translateY(-10px) scale(1.05)';
+        card.style.boxShadow = '0 12px 36px #4fc3f7cc';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = card.classList.contains('flipped') ? 'rotateY(180deg)' : '';
+        card.style.boxShadow = '';
+      });
+    });
+
+    // Fun Fact Button
+    const funFacts = [
+      "I love exploring AI and LLMs!",
+      "I can code in 5+ languages.",
+      "I built my portfolio from scratch!",
+      "I'm fascinated by RAG (Retrieval-Augmented Generation).",
+      "I enjoy solving algorithmic puzzles.",
+      "I dream of building my own AI assistant.",
+      "I love collaborating on open source projects.",
+      "I can switch between frontend and backend with ease!",
+      "I believe in lifelong learning.",
+      "I want to use tech to make a positive impact."
+    ];
+    const funFactBtn = document.getElementById('fun-fact-btn');
+    const funFactModal = document.getElementById('fun-fact-modal');
+    const factText = document.getElementById('fact-text');
+    const closeFact = document.getElementById('close-fact');
+    funFactBtn.addEventListener('click', () => {
+      factText.textContent = funFacts[Math.floor(Math.random() * funFacts.length)];
+      funFactModal.style.display = 'flex';
+    });
+    closeFact.addEventListener('click', () => {
+      funFactModal.style.display = 'none';
+    });
+    funFactModal.addEventListener('click', (e) => {
+      if (e.target === funFactModal) funFactModal.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
